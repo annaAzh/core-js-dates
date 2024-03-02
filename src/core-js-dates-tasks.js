@@ -73,8 +73,17 @@ function getDayName(date) {
  * Date('2024-02-13T00:00:00Z') => Date('2024-02-16T00:00:00Z')
  * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
  */
-function getNextFriday(/* date */) {
-  throw new Error('Not implemented');
+function getNextFriday(date) {
+  const copyDate = date;
+  const currentDay = copyDate.getDay();
+  const fridayNum = 5;
+  const fullWeek = 7;
+  const diff =
+    fridayNum - currentDay > 0
+      ? fridayNum - currentDay
+      : fridayNum + fullWeek - currentDay;
+
+  return new Date(copyDate.setDate(copyDate.getDate() + diff));
 }
 
 /**
